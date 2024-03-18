@@ -1,11 +1,11 @@
-package pl.mobilespot.vehiclecomparison.remote.dto
+package pl.mobilespot.vehiclecomparison.data.remote.dto
 
 import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
 import kotlinx.parcelize.Parcelize
 
 @Parcelize
-data class Starship(
+data class StarshipDto(
     val name: String,
     val model: String,
     @SerializedName("starship_class")

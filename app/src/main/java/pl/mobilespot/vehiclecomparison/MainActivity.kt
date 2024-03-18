@@ -18,7 +18,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import dagger.hilt.android.AndroidEntryPoint
 import pl.mobilespot.vehiclecomparison.Constants.BASE_URL
-import pl.mobilespot.vehiclecomparison.remote.StarshipApi
+import pl.mobilespot.vehiclecomparison.collection.CollectionScreen
+import pl.mobilespot.vehiclecomparison.data.remote.StarshipApi
 import pl.mobilespot.vehiclecomparison.ui.BottomNavigation
 import pl.mobilespot.vehiclecomparison.ui.BottomNavigationItem
 import pl.mobilespot.vehiclecomparison.ui.theme.VehicleComparisonTheme
@@ -48,7 +49,7 @@ class MainActivity : ComponentActivity() {
                             Modifier
                                 .fillMaxWidth()
                                 .padding(paddingValues)) {
-                            Greeting("Android")
+                            CollectionScreen()
                         }
                     }, bottomBar = {
 
@@ -83,16 +84,6 @@ class MainActivity : ComponentActivity() {
 //            val result = provideApiInstance().getStarships()
 //            println(result)
 //        }
-
-    }
-
-    fun provideApiInstance(): StarshipApi {
-        return Retrofit
-            .Builder()
-            .baseUrl(BASE_URL)
-            .addConverterFactory(GsonConverterFactory.create())
-            .build()
-            .create(StarshipApi::class.java)
     }
 }
 

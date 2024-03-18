@@ -1,4 +1,4 @@
-package pl.mobilespot.vehiclecomparison.remote.dto
+package pl.mobilespot.vehiclecomparison.data.remote.dto
 
 data class Results<T>(
     val count: Int,
