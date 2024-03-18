@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">VehicleComparison</string>
+
+    <string name="loading_error">Can not load any data.</string>
+    <string name="loading">Loading…</string>
+
 </resources>

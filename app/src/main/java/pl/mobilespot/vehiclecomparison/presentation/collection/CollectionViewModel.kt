@@ -8,6 +8,7 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
+import pl.mobilespot.vehiclecomparison.core.FakeData
 import pl.mobilespot.vehiclecomparison.domain.model.Starship
 import timber.log.Timber
 
@@ -21,12 +22,7 @@ class CollectionViewModel : ViewModel() {
             _uiState.update {
                 CollectionState(
                     collectionUiState = CollectionUiState.Success(
-                        Starship(
-                            "a",
-                            "b",
-                            "c",
-                            listOf("d", "e")
-                        )
+                        FakeData.starship
                     )
                 )
             }
