@@ -1,4 +1,4 @@
-package pl.mobilespot.vehiclecomparison.ui
+package pl.mobilespot.vehiclecomparison.presentation.common
 
 import android.content.res.Configuration.UI_MODE_NIGHT_YES
 import androidx.annotation.DrawableRes
@@ -21,7 +21,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import pl.mobilespot.vehiclecomparison.R
-import pl.mobilespot.vehiclecomparison.ui.theme.VehicleComparisonTheme
+import pl.mobilespot.vehiclecomparison.presentation.common.theme.VehicleComparisonTheme
 
 @Composable
 fun BottomNavigation(

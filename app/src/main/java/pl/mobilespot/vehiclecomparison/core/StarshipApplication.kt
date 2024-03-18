@@ -1,4 +1,4 @@
-package pl.mobilespot.vehiclecomparison
+package pl.mobilespot.vehiclecomparison.core
 
 import android.app.Application
 import dagger.hilt.android.HiltAndroidApp

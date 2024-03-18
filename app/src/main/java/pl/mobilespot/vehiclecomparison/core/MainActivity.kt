@@ -1,4 +1,4 @@
-package pl.mobilespot.vehiclecomparison
+package pl.mobilespot.vehiclecomparison.core
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -17,14 +17,11 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import dagger.hilt.android.AndroidEntryPoint
-import pl.mobilespot.vehiclecomparison.Constants.BASE_URL
-import pl.mobilespot.vehiclecomparison.collection.CollectionScreen
-import pl.mobilespot.vehiclecomparison.data.remote.StarshipApi
-import pl.mobilespot.vehiclecomparison.ui.BottomNavigation
-import pl.mobilespot.vehiclecomparison.ui.BottomNavigationItem
-import pl.mobilespot.vehiclecomparison.ui.theme.VehicleComparisonTheme
-import retrofit2.Retrofit
-import retrofit2.converter.gson.GsonConverterFactory
+import pl.mobilespot.vehiclecomparison.R
+import pl.mobilespot.vehiclecomparison.presentation.collection.CollectionScreen
+import pl.mobilespot.vehiclecomparison.presentation.common.BottomNavigation
+import pl.mobilespot.vehiclecomparison.presentation.common.BottomNavigationItem
+import pl.mobilespot.vehiclecomparison.presentation.common.theme.VehicleComparisonTheme
 
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {

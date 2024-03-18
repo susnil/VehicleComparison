@@ -1,4 +1,4 @@
-package pl.mobilespot.vehiclecomparison.ui.theme
+package pl.mobilespot.vehiclecomparison.presentation.common.theme
 
 import androidx.compose.ui.graphics.Color
 

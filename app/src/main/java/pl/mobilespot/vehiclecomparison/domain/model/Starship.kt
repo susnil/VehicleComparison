@@ -1,4 +1,4 @@
-package pl.mobilespot.vehiclecomparison.collection
+package pl.mobilespot.vehiclecomparison.domain.model
 
 import com.google.gson.annotations.SerializedName
 

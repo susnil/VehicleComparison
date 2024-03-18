@@ -1,4 +1,4 @@
-package pl.mobilespot.vehiclecomparison.collection
+package pl.mobilespot.vehiclecomparison.presentation.collection
 
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.material3.LinearProgressIndicator
