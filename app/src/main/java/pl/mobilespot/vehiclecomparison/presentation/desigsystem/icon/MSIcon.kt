@@ -12,6 +12,7 @@ import androidx.compose.material.icons.rounded.MonetizationOn
 import androidx.compose.material.icons.rounded.OilBarrel
 import androidx.compose.material.icons.rounded.People
 import androidx.compose.material.icons.rounded.Person3
+import androidx.compose.material.icons.rounded.Score
 import androidx.compose.material.icons.rounded.ShoppingCart
 import androidx.compose.material.icons.rounded.Speed
 import androidx.compose.material.icons.rounded.Straighten
@@ -39,5 +40,6 @@ object MSIcon {
     val Films = Icons.Rounded.Videocam
     val Pilots = Icons.Rounded.Person3
     val Time = Icons.Rounded.Timer
+    val Rating = Icons.Rounded.Score
 
 }

@@ -21,7 +21,7 @@ class CollectionViewModel @Inject constructor() : ViewModel() {
 
     init {
         viewModelScope.launch {
-            delay(3000)
+            delay(100)
             _uiState.update {
                 CollectionState(
                     collectionUiState = CollectionUiState.Success(

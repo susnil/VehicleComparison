@@ -12,4 +12,22 @@
 
     <string name="compare_error">Can not compare any data. Select at least 2 vehicles and try again.</string>
 
+    <string name="attribute_films">Films:</string>
+    <string name="attribute_pilots">Pilots:</string>
+    <string name="attribute_MGLT">MGLT:</string>
+    <string name="attribute_cargo_capacity">Cargo capacity:</string>
+    <string name="attribute_consumables">Consumables:</string>
+    <string name="attribute_cost_in_credits">Cost in credits:</string>
+    <string name="attribute_created">Created:</string>
+    <string name="attribute_crew">Crew:</string>
+    <string name="attribute_passengers">Passengers:</string>
+    <string name="attribute_edited">Edited:</string>
+    <string name="attribute_hyperdrive_rating">Hyperdrive rating:</string>
+    <string name="attribute_length">Length:</string>
+    <string name="attribute_manufacturer">Manufacturer:</string>
+    <string name="attribute_max_atmosphering_speed">Max atmosphering speed:</string>
+    <string name="attribute_model">Model:</string>
+    <string name="attribute_name">Name:</string>
+    <string name="attribute_starship_class">Starship_class:</string>
+
 </resources>
