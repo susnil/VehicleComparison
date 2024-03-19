@@ -20,8 +20,8 @@ fun StarshipGrid(starship: Starship) {
 @Preview
 @Composable
 fun StarshipGridPreview(
-//    @PreviewParameter(StarshipPreviewParameterProvider::class)
-//    starship: Starship,
+    @PreviewParameter(StarshipPreviewParameterProvider::class)
+    starship: Starship,
 ) {
     StarshipGrid(starship)
 }

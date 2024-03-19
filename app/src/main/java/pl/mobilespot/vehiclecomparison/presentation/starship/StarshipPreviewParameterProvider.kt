@@ -5,7 +5,6 @@ import pl.mobilespot.vehiclecomparison.core.FakeData
 import pl.mobilespot.vehiclecomparison.domain.model.Starship
 
 class StarshipPreviewParameterProvider : PreviewParameterProvider<Starship> {
-    override val values: Sequence<Starship>
-        get() = sequence { FakeData.starship }
+    override val values: Sequence<Starship> = sequenceOf(FakeData.starship)
 
 }
