@@ -1,4 +1,4 @@
-package pl.mobilespot.vehiclecomparison.presentation.common.theme
+package pl.mobilespot.vehiclecomparison.presentation.desigsystem.theme
 
 import android.app.Activity
 import android.os.Build

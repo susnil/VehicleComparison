@@ -7,4 +7,5 @@ data class Starship(
     val model: String,
     @SerializedName("starship_class")
     val starshipClass: String,
-    val manufacturer: List<String>)
+    val manufacturer: List<String>,
+    )

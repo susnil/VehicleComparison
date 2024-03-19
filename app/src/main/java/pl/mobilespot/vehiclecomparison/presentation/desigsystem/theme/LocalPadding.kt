@@ -1,4 +1,4 @@
-package pl.mobilespot.vehiclecomparison.presentation.common
+package pl.mobilespot.vehiclecomparison.presentation.desigsystem.theme
 
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
@@ -7,12 +7,12 @@ import androidx.compose.runtime.compositionLocalOf
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 
-val LocalIcon = compositionLocalOf { Icon() }
-data class Icon(
-    val small: Dp = 12.dp,
-    val normal: Dp = 20.dp
+val LocalPadding = compositionLocalOf { Padding() }
+data class Padding(
+    val extraSmall: Dp = 6.dp,
+    val small: Dp = 8.dp
 )
-val MaterialTheme.icon: Icon
+val MaterialTheme.padding: Padding
     @Composable
     @ReadOnlyComposable
-    get() = LocalIcon.current
+    get() = LocalPadding.current

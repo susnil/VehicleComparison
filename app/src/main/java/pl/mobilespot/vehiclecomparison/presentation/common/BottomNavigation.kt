@@ -21,7 +21,9 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import pl.mobilespot.vehiclecomparison.R
-import pl.mobilespot.vehiclecomparison.presentation.common.theme.VehicleComparisonTheme
+import pl.mobilespot.vehiclecomparison.presentation.desigsystem.icon.LocalIcon
+import pl.mobilespot.vehiclecomparison.presentation.desigsystem.theme.LocalPadding
+import pl.mobilespot.vehiclecomparison.presentation.desigsystem.theme.VehicleComparisonTheme
 
 @Composable
 fun BottomNavigation(

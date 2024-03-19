@@ -21,7 +21,7 @@ import pl.mobilespot.vehiclecomparison.R
 import pl.mobilespot.vehiclecomparison.presentation.collection.CollectionScreen
 import pl.mobilespot.vehiclecomparison.presentation.common.BottomNavigation
 import pl.mobilespot.vehiclecomparison.presentation.common.BottomNavigationItem
-import pl.mobilespot.vehiclecomparison.presentation.common.theme.VehicleComparisonTheme
+import pl.mobilespot.vehiclecomparison.presentation.desigsystem.theme.VehicleComparisonTheme
 
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {

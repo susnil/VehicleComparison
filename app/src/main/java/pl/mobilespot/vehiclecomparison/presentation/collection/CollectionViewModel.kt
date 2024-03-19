@@ -22,7 +22,10 @@ class CollectionViewModel : ViewModel() {
             _uiState.update {
                 CollectionState(
                     collectionUiState = CollectionUiState.Success(
-                        FakeData.starship
+                        listOf(
+                            FakeData.starship,
+                            FakeData.starship.copy("Happy car", "Royce Rolls")
+                        )
                     )
                 )
             }
@@ -38,7 +41,7 @@ data class CollectionState(
 )
 
 sealed class CollectionUiState {
-    data class Success(val starships: Starship) : CollectionUiState()
+    data class Success(val starships: List<Starship>) : CollectionUiState()
     object Error : CollectionUiState()
     object Loading : CollectionUiState()
 }

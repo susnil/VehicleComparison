@@ -11,7 +11,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import pl.mobilespot.vehiclecomparison.R
-import pl.mobilespot.vehiclecomparison.presentation.starship.StarshipGrid
+import pl.mobilespot.vehiclecomparison.presentation.starship.StarshipsGrid
 
 @Composable
 fun CollectionScreen(viewModel: CollectionViewModel = hiltViewModel()) {
@@ -26,8 +26,8 @@ fun CollectionScreen(viewModel: CollectionViewModel = hiltViewModel()) {
         }
 
         CollectionUiState.Error -> Text(stringResource(R.string.loading_error))
-        is CollectionUiState.Success -> 
-            StarshipGrid(starship = (uiState.collectionUiState as CollectionUiState.Success).starships)
+        is CollectionUiState.Success ->
+            StarshipsGrid((uiState.collectionUiState as CollectionUiState.Success).starships)
     }
 
 }
