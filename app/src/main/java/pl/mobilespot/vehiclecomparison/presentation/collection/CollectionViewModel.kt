@@ -3,18 +3,14 @@ package pl.mobilespot.vehiclecomparison.presentation.collection
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
-import pl.mobilespot.vehiclecomparison.core.di.AppModule.provideApiInstance
+import pl.mobilespot.vehiclecomparison.core.FakeData
 import pl.mobilespot.vehiclecomparison.data.mapper.StarShipMapper
 import pl.mobilespot.vehiclecomparison.domain.model.Starship
-import timber.log.Timber
 import javax.inject.Inject
 
 @HiltViewModel
@@ -27,37 +23,20 @@ class CollectionViewModel @Inject constructor() : ViewModel() {
 
     init {
         viewModelScope.launch {
-            CoroutineScope(Dispatchers.IO).launch {
-
-                val collection = mutableListOf<Starship>()
-                var page = 1
-                var isWorking = true
-                do {
-                    val result = provideApiInstance().getStarships(page)
-                    Timber.d("Input dto: $result")
-                    val newStarships = result.results.map { dto -> starShipMapper.fromDto(dto) }
-                    collection.addAll(newStarships)
-                    if (result.next == null) {
-                        isWorking = false
-                    }
-
-                    _uiState.update {
-                        CollectionState(
-                            collectionUiState =
-                            if (isWorking) {
-                                CollectionUiState.PartiallySuccess(
-                                    collection
-                                )
-                            } else CollectionUiState.FullySuccess(
-                                collection
-                            )
+            _uiState.update {
+                CollectionState(
+                    collectionUiState = CollectionUiState.FullySuccess(
+                        listOf(
+                            FakeData.starship1,
+                            FakeData.starship2,
+                            FakeData.starship3
                         )
-                    }
-                    page++
-                } while (isWorking)
+                    )
+                )
             }
         }
     }
+
 }
 
 data class CollectionState(
