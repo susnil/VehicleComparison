@@ -22,16 +22,20 @@ import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.PreviewParameter
+import androidx.hilt.navigation.compose.hiltViewModel
 import pl.mobilespot.vehiclecomparison.R
 import pl.mobilespot.vehiclecomparison.domain.model.Starship
+import pl.mobilespot.vehiclecomparison.presentation.comparison.ComparisonViewModel
 import pl.mobilespot.vehiclecomparison.presentation.desigsystem.icon.MSIcon
 import pl.mobilespot.vehiclecomparison.presentation.desigsystem.theme.padding
-import timber.log.Timber
 import java.time.format.DateTimeFormatter
 
 @Composable
-fun StarshipDetailsScreen(starship: Starship) {
-    var selected by remember { mutableStateOf(false) }
+fun StarshipDetailsScreen(
+    starship: Starship,
+    comparisonViewModel: ComparisonViewModel = hiltViewModel()
+) {
+    var selected by remember { mutableStateOf(comparisonViewModel.hasSelected(starship)) }
     val interactionSource = remember { MutableInteractionSource() }
 
     Card(Modifier
@@ -41,8 +45,8 @@ fun StarshipDetailsScreen(starship: Starship) {
             indication = rememberRipple(),
             enabled = true,
             onClick = {
+                comparisonViewModel.select(starship)
                 selected = !selected
-                Timber.d("Click, $selected")
             }
         )
         .padding(MaterialTheme.padding.small)) {

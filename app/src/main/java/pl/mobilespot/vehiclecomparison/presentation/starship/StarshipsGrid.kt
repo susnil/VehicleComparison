@@ -13,7 +13,7 @@ fun StarshipsGrid(starships: List<Starship>) {
         columns = GridCells.Adaptive(400.dp),
     ) {
         items(starships) { starship ->
-            StarshipDetailsScreen(starship = starship) // todo back to one
+            StarshipDetailsScreen(starship = starship)
         }
     }
 }
