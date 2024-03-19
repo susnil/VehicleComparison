@@ -10,7 +10,7 @@ import pl.mobilespot.vehiclecomparison.domain.model.Starship
 @Composable
 fun StarshipsGrid(starships: List<Starship>) {
     LazyVerticalGrid(
-        columns = GridCells.Adaptive(300.dp),
+        columns = GridCells.Adaptive(400.dp),
     ) {
         items(starships) { starship ->
             StarshipDetailsScreen(starship = starship) // todo back to one

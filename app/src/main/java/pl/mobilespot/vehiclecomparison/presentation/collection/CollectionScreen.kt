@@ -7,7 +7,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.text.style.TextAlign
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import pl.mobilespot.vehiclecomparison.R
@@ -22,12 +21,14 @@ fun CollectionScreen(viewModel: CollectionViewModel = hiltViewModel()) {
             LinearProgressIndicator(
                 modifier = Modifier.fillMaxWidth(),
             )
-            Text(stringResource(R.string.loading), textAlign = TextAlign.Center)
+            Text(stringResource(R.string.loading))
         }
 
-        CollectionUiState.Error -> Text(stringResource(R.string.loading_error))
+        is CollectionUiState.Error -> Text(stringResource(R.string.loading_error))
+
         is CollectionUiState.Success ->
             StarshipsGrid((uiState.collectionUiState as CollectionUiState.Success).starships)
-    }
 
+    }
 }
+

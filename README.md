@@ -12,7 +12,9 @@ All vehicle data is fetched live from the swapi.dev.
 - Kotlin Coroutines
 
 # Goals
-
+[x] Show one starship
+[x] Show many starship
+[x] Fetch all starships
 [ ] Compare 2 different starships
 [ ] Compare more than 2 vehicles
 [ ] Highlight the best and worst values
