@@ -8,4 +8,6 @@ data class Starship(
     @SerializedName("starship_class")
     val starshipClass: String,
     val manufacturer: List<String>,
+    val films: Int,
+    val pilots: Int,
     )

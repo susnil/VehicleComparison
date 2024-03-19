@@ -18,7 +18,7 @@ import pl.mobilespot.vehiclecomparison.domain.model.Starship
 import pl.mobilespot.vehiclecomparison.presentation.desigsystem.theme.padding
 
 @Composable
-fun StarshipGrid(starship: Starship) {
+fun StarshipGrid(starship: Starship) { // todo
     Card(Modifier.padding(MaterialTheme.padding.small)) {
         Column {
             Text(starship.name, textAlign = TextAlign.Center)

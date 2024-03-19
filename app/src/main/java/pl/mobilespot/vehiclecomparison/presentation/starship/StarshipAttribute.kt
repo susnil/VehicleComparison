@@ -1,8 +1,6 @@
 package pl.mobilespot.vehiclecomparison.presentation.starship
 
 import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.fillMaxHeight
-import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.size
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
@@ -19,8 +17,8 @@ import pl.mobilespot.vehiclecomparison.presentation.desigsystem.icon.LocalIcon
 import pl.mobilespot.vehiclecomparison.presentation.desigsystem.icon.MSIcon
 
 @Composable
-fun StarshipAttribute(text: String, image: ImageVector) {
-    Row(Modifier.fillMaxWidth(), verticalAlignment = Alignment.CenterVertically) {
+fun StarshipAttribute(text: String, image: ImageVector, modifier: Modifier = Modifier) {
+    Row(verticalAlignment = Alignment.CenterVertically) {
         Icon(
             imageVector = image,
             contentDescription = null,
