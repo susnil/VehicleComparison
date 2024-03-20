@@ -9,5 +9,6 @@
     <color name="white">#FFFFFFFF</color>
     <color name="body">#4E4B66</color>
     <color name="min_value">#E69D9D</color>
+    <color name="the_same_value">#FFFFFF</color>
     <color name="max_value">#44AA44</color>
 </resources>

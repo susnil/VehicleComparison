@@ -253,6 +253,7 @@ fun actionSelect(
     starship: Starship
 ): Boolean = comparisonViewModel.select(starship)
 
+
 @SuppressLint("ModifierFactoryUnreferencedReceiver")
 @Composable
 fun Modifier.takeBackgroundForMetrics(
@@ -260,7 +261,11 @@ fun Modifier.takeBackgroundForMetrics(
     maxMetrics: Number?,
     value: Number
 ): Modifier {
-    if (minMetrics == null || maxMetrics == null || minMetrics == maxMetrics) return this
+
+    if (minMetrics == null || maxMetrics == null) return this
+    if (minMetrics == maxMetrics && minMetrics == value) {
+        return background(colorResource(id = R.color.the_same_value), CircleShape)
+    }
     return if (minMetrics == value) {
         background(colorResource(id = R.color.min_value), CircleShape)
     } else if (maxMetrics == value) {
