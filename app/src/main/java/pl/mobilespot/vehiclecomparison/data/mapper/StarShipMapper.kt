@@ -27,7 +27,7 @@ class StarShipMapper @Inject constructor() : Mapper<StarshipDto, Starship> {
             parseSafetyIsoString(dto.edited),
             parseStringToOptionalLong(dto.maxAtmospheringSpeed),
             parseStringToOptionalPeriod(dto.consumables),
-            parseStringToLong(dto.MGLT)
+            parseStringToLong(dto.MGLT.removeSuffix("MGLT").trim())
         )
     }
 

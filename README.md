@@ -6,21 +6,23 @@ All vehicle data is fetched live from the swapi.dev.
 
 # Tech stack
 
-- Kotlin
-- RetroFit
-- Dagger
-- Kotlin Coroutines
+- 📝Kotlin
+- 📝RetroFit
+- Dagger Hilt
+- 📝Kotlin Coroutines
 
 # Goals
 [x] Show one starship
 [x] Show many starship
+[x] 📝Fetch from swapi.dev
 [x] Fetch all starships
-[x] Compare 2 different starships
-[x] Compare more than 2 vehicles
-[x] Highlight the best and worst values
+[x] 📝Compare 2 different starships
+[x] ⭐️Compare more than 2 vehicles
+[x] 📝Highlight the best and worst values
 [ ] Kotlin Coroutines
-[ ] History of vehicle comparison
-[ ] Filter selected vehicles by most important parameters (e.g. manufacturer or model)
+[ ] ⭐️Some unit tests, 
+[ ] ⭐️History of vehicle comparison
+[ ] ⭐️Filter selected vehicles by most important parameters (e.g. manufacturer or model)
 [ ] Add collaborator to this repository
 
 # Preview

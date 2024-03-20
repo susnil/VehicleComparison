@@ -2,12 +2,14 @@ package pl.mobilespot.vehiclecomparison
 
 import com.google.gson.Gson
 import org.junit.Assert.assertEquals
+import org.junit.Before
 import org.junit.Test
+import pl.mobilespot.vehiclecomparison.data.mapper.StarShipMapper
 import pl.mobilespot.vehiclecomparison.data.remote.dto.StarshipDto
+import java.time.Period
 
-
-class ParseStarshipTest {
-    var json = "{\n" +
+class MapperStarshipTest {
+    private var json = "{\n" +
             "    \"MGLT\": \"10 MGLT\",\n" +
             "    \"cargo_capacity\": \"1000000000000\",\n" +
             "    \"consumables\": \"3 years\",\n" +
@@ -30,14 +32,36 @@ class ParseStarshipTest {
             "    \"url\": \"https://swapi.dev/api/starships/9/\"\n" +
             "}"
 
-    @Test
-    fun convertObjectTest() {
-        val convertedObject = Gson().fromJson(
-            json,
-            StarshipDto::class.java
-        )
-        assertEquals(1, convertedObject.films.count())
+    private val starshipDto: StarshipDto = Gson().fromJson(
+        json,
+        StarshipDto::class.java
+    )
+
+    private lateinit var starShipMapper: StarShipMapper
+
+    @Before
+    fun setUp() {
+        starShipMapper = StarShipMapper()
     }
 
+    @Test
+    fun `verify converted StarshipDto`() {
+        assertEquals("3 years", starshipDto.consumables)
+        assertEquals(1, starshipDto.films.count())
+        assertEquals("https://swapi.dev/api/films/1/", starshipDto.films[0])
+    }
 
+    @Test
+    fun `verify converted StarshipDto to Starship`() {
+        val starship = starShipMapper.fromDto(starshipDto)
+
+        assertEquals(1, starship.films)
+        assertEquals(2, starship.manufacturer.count())
+        assertEquals(120000.0F, starship.length)
+        assertEquals(342953, starship.crew)
+        assertEquals(843342, starship.passengers)
+        assertEquals(10, starship.MGLT)
+
+        assertEquals(null, starship.maxAtmospheringSpeed)
+    }
 }

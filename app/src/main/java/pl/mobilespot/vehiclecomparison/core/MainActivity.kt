@@ -108,10 +108,6 @@ class MainActivity : ComponentActivity() {
                 )
             }
         }
-//        CoroutineScope(Dispatchers.IO).launch {
-//            val result = provideApiInstance().getStarships()
-//            println(result)
-//        }
     }
 }
 
