@@ -12,10 +12,11 @@ import androidx.compose.ui.res.stringResource
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import pl.mobilespot.vehiclecomparison.R
+import pl.mobilespot.vehiclecomparison.presentation.comparison.ComparisonViewModel
 import pl.mobilespot.vehiclecomparison.presentation.starship.StarshipsGrid
 
 @Composable
-fun CollectionScreen(viewModel: CollectionViewModel = hiltViewModel()) {
+fun CollectionScreen(comparisonViewModel: ComparisonViewModel = hiltViewModel(), viewModel: CollectionViewModel = hiltViewModel()) {
     val uiState by viewModel.uiState.collectAsStateWithLifecycle()
 
     when (uiState.collectionUiState) {
@@ -26,7 +27,7 @@ fun CollectionScreen(viewModel: CollectionViewModel = hiltViewModel()) {
         is CollectionUiState.Error -> ErrorInfo()
 
         is CollectionUiState.Success ->
-            StarshipsGrid((uiState.collectionUiState as CollectionUiState.Success).starships)
+            StarshipsGrid(comparisonViewModel, (uiState.collectionUiState as CollectionUiState.Success).starships)
 
     }
 }

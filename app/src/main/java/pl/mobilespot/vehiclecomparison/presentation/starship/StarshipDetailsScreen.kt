@@ -32,8 +32,8 @@ import java.time.format.DateTimeFormatter
 
 @Composable
 fun StarshipDetailsScreen(
+    comparisonViewModel: ComparisonViewModel = hiltViewModel(),
     starship: Starship,
-    comparisonViewModel: ComparisonViewModel = hiltViewModel()
 ) {
     var selected by remember { mutableStateOf(comparisonViewModel.hasSelected(starship)) }
     val interactionSource = remember { MutableInteractionSource() }
@@ -183,6 +183,6 @@ fun StarshipDetailsScreenPreview(
     @PreviewParameter(StarshipPreviewParameterProvider::class, limit = 1)
     starship: Starship,
 ) {
-    StarshipDetailsScreen(starship)
+    StarshipDetailsScreen(starship = starship)
 }
 
