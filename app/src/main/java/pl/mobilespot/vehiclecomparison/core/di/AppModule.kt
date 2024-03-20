@@ -5,6 +5,7 @@ import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import pl.mobilespot.vehiclecomparison.core.Constants
+import pl.mobilespot.vehiclecomparison.data.mapper.StarShipMapper
 import pl.mobilespot.vehiclecomparison.data.remote.StarshipApi
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
@@ -23,5 +24,11 @@ object AppModule {
             .addConverterFactory(GsonConverterFactory.create())
             .build()
             .create(StarshipApi::class.java)
+    }
+
+    @Provides
+    @Singleton
+    fun provideMapperInstance(): StarShipMapper {
+        return StarShipMapper()
     }
 }

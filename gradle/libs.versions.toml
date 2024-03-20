@@ -12,6 +12,7 @@ activityCompose = "1.8.2"
 hiltAndroid = "2.51"
 composeBom = "2024.02.01"
 loggingInterceptor = "4.10.0"
+pagingRuntime = "3.2.1"
 retrofit = "2.9.0"
 timber = "5.0.1"
 androidxHiltNavigationCompose = "1.2.0"
@@ -19,6 +20,8 @@ androidxLifecycle = "2.7.0"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
+androidx-paging-compose = { module = "androidx.paging:paging-compose", version.ref = "pagingRuntime" }
+androidx-paging-runtime = { module = "androidx.paging:paging-runtime", version.ref = "pagingRuntime" }
 converter-gson = { module = "com.squareup.retrofit2:converter-gson", version.ref = "converterGson" }
 gson = { module = "com.google.code.gson:gson", version.ref = "gson" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }

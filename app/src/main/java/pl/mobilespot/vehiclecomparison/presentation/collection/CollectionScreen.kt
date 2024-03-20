@@ -2,33 +2,75 @@ package pl.mobilespot.vehiclecomparison.presentation.collection
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.lazy.grid.GridCells
+import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.material3.LinearProgressIndicator
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.hilt.navigation.compose.hiltViewModel
-import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import androidx.paging.LoadState
+import androidx.paging.compose.LazyPagingItems
+import androidx.paging.compose.collectAsLazyPagingItems
+import androidx.paging.compose.itemKey
 import pl.mobilespot.vehiclecomparison.R
+import pl.mobilespot.vehiclecomparison.domain.model.Starship
 import pl.mobilespot.vehiclecomparison.presentation.comparison.ComparisonViewModel
-import pl.mobilespot.vehiclecomparison.presentation.starship.StarshipsGrid
+import pl.mobilespot.vehiclecomparison.presentation.desigsystem.theme.size
+import pl.mobilespot.vehiclecomparison.presentation.starship.StarshipDetailsScreen
 
 @Composable
-fun CollectionScreen(comparisonViewModel: ComparisonViewModel = hiltViewModel(), viewModel: CollectionViewModel = hiltViewModel()) {
-    val uiState by viewModel.uiState.collectAsStateWithLifecycle()
+fun CollectionScreen(
+    comparisonViewModel: ComparisonViewModel = hiltViewModel(),
+    viewModel: CollectionViewModel = hiltViewModel()
+) {
+    val pagingItems = viewModel.starships.collectAsLazyPagingItems()
 
-    when (uiState.collectionUiState) {
-        is CollectionUiState.Loading -> {
+    val handlePagingResult = handlePagingResult(pagingItems)
+    if (handlePagingResult) {
+        LazyVerticalGrid(
+            columns = GridCells.Adaptive(MaterialTheme.size.minGridSize),
+        ) {
+            items(count = pagingItems.itemCount,
+                key = pagingItems.itemKey { it.name }) { index ->
+                pagingItems[index]?.let {
+                    StarshipDetailsScreen(
+                        comparisonViewModel,
+                        starship = it
+                    )
+                }
+            }
+        }
+    }
+}
+
+@Composable
+fun handlePagingResult(articles: LazyPagingItems<Starship>): Boolean {
+    val loadState = articles.loadState
+    val error = when {
+        loadState.refresh is LoadState.Error -> loadState.refresh as LoadState.Error
+        loadState.prepend is LoadState.Error -> loadState.prepend as LoadState.Error
+        loadState.append is LoadState.Error -> loadState.append as LoadState.Error
+        else -> null
+    }
+
+    return when {
+        loadState.refresh is LoadState.Loading -> {
             LoadingInfo()
+            false
         }
 
-        is CollectionUiState.Error -> ErrorInfo()
+        error != null -> {
+            ErrorInfo()
+            false
+        }
 
-        is CollectionUiState.Success ->
-            StarshipsGrid(comparisonViewModel, (uiState.collectionUiState as CollectionUiState.Success).starships)
-
+        else -> {
+            true
+        }
     }
 }
 

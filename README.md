@@ -10,6 +10,7 @@ All vehicle data is fetched live from the swapi.dev.
 - 📝RetroFit
 - Dagger Hilt
 - 📝Kotlin Coroutines
+- Paging 
 
 # Goals
 [x] Show one starship
@@ -19,7 +20,7 @@ All vehicle data is fetched live from the swapi.dev.
 [x] 📝Compare 2 different starships
 [x] ⭐️Compare more than 2 vehicles
 [x] 📝Highlight the best and worst values
-[ ] Kotlin Coroutines
+[x] Kotlin Coroutines
 [ ] ⭐️Some unit tests for mapper, use cases.
 [ ] ⭐️History of vehicle comparison
 [ ] ⭐️Filter selected vehicles by most important parameters (e.g. manufacturer or model)
