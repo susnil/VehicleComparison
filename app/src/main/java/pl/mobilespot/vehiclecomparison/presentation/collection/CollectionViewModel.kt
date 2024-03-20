@@ -17,29 +17,36 @@ import javax.inject.Inject
 @HiltViewModel
 class CollectionViewModel @Inject constructor(getStarship: GetStarship) : ViewModel() {
 
-    private val _wordFlow: MutableStateFlow<String> = MutableStateFlow("")
-    val wordFlow: StateFlow<String> = _wordFlow.asStateFlow()
+    private val _filterForm: MutableStateFlow<FilterForm> = MutableStateFlow(FilterForm.raw)
+    val filterForm: StateFlow<FilterForm> = _filterForm.asStateFlow()
 
     private val allStarships = getStarship().cachedIn(viewModelScope)
 
-    val starships = allStarships.combine(wordFlow) { pagingData, searchName ->
-        if (searchName.isEmpty()) {
+    val starships = allStarships.combine(filterForm) { pagingData, form ->
+        if (form.isEmpty()) {
             pagingData
         } else {
             pagingData
-                .filter { it.model.startsWith(searchName, ignoreCase = true) }
+                .filter {
+                    if (form.name.isEmpty()) true else {
+                        it.name.startsWith(form.name, ignoreCase = true)
+                    }
+                }.filter {
+                    if (form.manufacturer.isEmpty()) true else {
+                        it.manufacturer.any { it.contains(form.manufacturer, ignoreCase = true) }
+                    }
+                }
         }
     }.cachedIn(viewModelScope)
 
-    fun searchName(text: String) {
-        _wordFlow.update { text }
-        Timber.d("Search name: $text")
+    fun searchName(name: String, manufacturer: String) {
+        _filterForm.update { FilterForm(name, manufacturer) }
+        Timber.d("Search form: $name $manufacturer")
     }
 
     fun clearFilter() {
-        _wordFlow.update { "" }
+        _filterForm.update { FilterForm.raw }
         Timber.d("Disable filter")
     }
 
 }
-

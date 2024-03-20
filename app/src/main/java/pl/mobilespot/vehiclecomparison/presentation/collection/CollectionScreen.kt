@@ -14,6 +14,7 @@ import androidx.compose.material3.LinearProgressIndicator
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
+import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -24,6 +25,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.stringResource
 import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.paging.LoadState
 import androidx.paging.compose.LazyPagingItems
 import androidx.paging.compose.collectAsLazyPagingItems
@@ -62,17 +64,20 @@ fun CollectionScreen(
             var isFilterDialogShown by remember {
                 mutableStateOf(false)
             }
+            val form by viewModel.filterForm.collectAsStateWithLifecycle()
             if (isFilterDialogShown) {
+
                 FilterDialog(
                     {
                         viewModel.clearFilter()
                         isFilterDialogShown = false
                     },
-                    {
-                        viewModel.searchName("S")
+                    { name, manufacturer ->
+                        viewModel.searchName(name, manufacturer)
                         isFilterDialogShown = false
                     },
-                    MSIcon.FilterEnable
+                    MSIcon.FilterEnable,
+                    form
                 )
             }
 
@@ -81,7 +86,10 @@ fun CollectionScreen(
                     onClick = { isFilterDialogShown = true },
                     Modifier.padding(MaterialTheme.padding.medium),
                 ) {
-                    Icon(MSIcon.FilterEnable, "Filter")
+                    Icon(
+                        if (form.isEmpty()) MSIcon.FilterDisable else MSIcon.FilterEnable,
+                        "Filter"
+                    )
                 }
             }
         }
@@ -137,9 +145,16 @@ private fun LoadingInfo() {
 @Composable
 fun FilterDialog(
     onDismissRequest: () -> Unit,
-    onConfirmation: () -> Unit,
+    onConfirmation: (String, String) -> Unit,
     icon: ImageVector,
+    form: FilterForm,
 ) {
+    var nameTextField by remember {
+        mutableStateOf(form.name)
+    }
+    var manufacturerTextField by remember {
+        mutableStateOf(form.manufacturer)
+    }
     AlertDialog(
         icon = {
             Icon(icon, contentDescription = stringResource(id = R.string.filter))
@@ -150,7 +165,13 @@ fun FilterDialog(
         text = {
             Column {
                 Text(stringResource(id = R.string.attribute_name))
+                TextField(
+                    value = nameTextField,
+                    onValueChange = { nameTextField = it })
                 Text(stringResource(id = R.string.attribute_manufacturer))
+                TextField(
+                    value = manufacturerTextField,
+                    onValueChange = { manufacturerTextField = it })
             }
         },
         onDismissRequest = {
@@ -159,7 +180,7 @@ fun FilterDialog(
         confirmButton = {
             TextButton(
                 onClick = {
-                    onConfirmation()
+                    onConfirmation(nameTextField, manufacturerTextField)
                 }
             ) {
                 Text(stringResource(id = R.string.apply))
