@@ -21,9 +21,9 @@ All vehicle data is fetched live from the swapi.dev.
 [x] ⭐️Compare more than 2 vehicles
 [x] 📝Highlight the best and worst values
 [x] Kotlin Coroutines
-[ ] ⭐️Some unit tests for mapper, use cases.
+[x] ⭐️Some unit tests for mapper, use cases.
 [ ] ⭐️History of vehicle comparison
-[ ] ⭐️Filter selected vehicles by most important parameters (e.g. manufacturer or model)
+[x] ⭐️Filter selected vehicles by most important parameters (e.g. manufacturer or model)
 [ ] Add collaborator to this repository
 
 # Preview
