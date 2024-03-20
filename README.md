@@ -28,6 +28,12 @@ All vehicle data is fetched live from the swapi.dev.
 
 # Preview
 
+![Collection_Phone.png](screenshots%2FCollection_Phone.png)
+
+![Collection_Tablet.png](screenshots%2FCollection_Tablet.png)
+
+![Compare_Tablet.png](screenshots%2FCompare_Tablet.png)
+
 # Recommendation
 Android Studio Iguana | 2023.2.1
 Build #AI-232.10227.8.2321.11479570, built on February 21, 2024
