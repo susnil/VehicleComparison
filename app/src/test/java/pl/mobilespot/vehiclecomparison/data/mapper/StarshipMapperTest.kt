@@ -1,14 +1,12 @@
-package pl.mobilespot.vehiclecomparison
+package pl.mobilespot.vehiclecomparison.data.mapper
 
 import com.google.gson.Gson
 import org.junit.Assert.assertEquals
 import org.junit.Before
 import org.junit.Test
-import pl.mobilespot.vehiclecomparison.data.mapper.StarShipMapper
 import pl.mobilespot.vehiclecomparison.data.remote.dto.StarshipDto
-import java.time.Period
 
-class MapperStarshipTest {
+class StarshipMapperTest {
     private var json = "{\n" +
             "    \"MGLT\": \"10 MGLT\",\n" +
             "    \"cargo_capacity\": \"1000000000000\",\n" +
