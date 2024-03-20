@@ -9,8 +9,6 @@ import pl.mobilespot.vehiclecomparison.domain.model.Starship
 import timber.log.Timber
 import javax.inject.Inject
 
-data class ComparisonUiState(val set: Set<Starship>)
-
 @HiltViewModel
 class ComparisonViewModel @Inject constructor() : ViewModel() {
 

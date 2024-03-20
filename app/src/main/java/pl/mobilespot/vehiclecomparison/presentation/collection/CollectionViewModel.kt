@@ -10,7 +10,6 @@ import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import pl.mobilespot.vehiclecomparison.core.FakeData
 import pl.mobilespot.vehiclecomparison.data.mapper.StarShipMapper
-import pl.mobilespot.vehiclecomparison.domain.model.Starship
 import javax.inject.Inject
 
 @HiltViewModel
@@ -39,15 +38,3 @@ class CollectionViewModel @Inject constructor() : ViewModel() {
 
 }
 
-data class CollectionState(
-    val collectionUiState: CollectionUiState = CollectionUiState.Loading,
-    val selected: List<Int> = mutableListOf<Int>()
-)
-
-sealed class CollectionUiState {
-    abstract class Success(open val starships: List<Starship>) : CollectionUiState()
-    data class PartiallySuccess(override val starships: List<Starship>) : Success(starships)
-    data class FullySuccess(override val starships: List<Starship>) : Success(starships)
-    object Error : CollectionUiState()
-    object Loading : CollectionUiState()
-}

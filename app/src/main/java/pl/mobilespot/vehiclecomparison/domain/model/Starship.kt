@@ -10,8 +10,8 @@ data class Starship(
     @SerializedName("starship_class")
     val starshipClass: String,
     val manufacturer: List<String>,
-    val films: Int,
-    val pilots: Int,
+    override val films: Int,
+    override val pilots: Int,
     val cargoCapacity: Long,
     val costInCredits: Long,
     val crew: Long,
@@ -23,5 +23,4 @@ data class Starship(
     val maxAtmospheringSpeed: Long?,
     val consumables: Period?,
     val MGLT: Long
-    )
-
+) : ComparableAttributes(films, pilots)
