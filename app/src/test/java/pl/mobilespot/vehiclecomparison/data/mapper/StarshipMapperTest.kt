@@ -5,6 +5,7 @@ import org.junit.Assert.assertEquals
 import org.junit.Before
 import org.junit.Test
 import pl.mobilespot.vehiclecomparison.data.remote.dto.StarshipDto
+import java.time.Period
 
 class StarshipMapperTest {
     private var json = "{\n" +
@@ -59,6 +60,7 @@ class StarshipMapperTest {
         assertEquals(342953, starship.crew)
         assertEquals(843342, starship.passengers)
         assertEquals(10, starship.MGLT)
+        assertEquals(Period.ofYears(3), starship.consumables)
 
         assertEquals(null, starship.maxAtmospheringSpeed)
     }
