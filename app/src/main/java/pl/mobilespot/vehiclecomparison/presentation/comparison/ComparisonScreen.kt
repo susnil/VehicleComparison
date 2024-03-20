@@ -4,6 +4,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.res.pluralStringResource
 import androidx.compose.ui.res.stringResource
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
@@ -15,15 +16,15 @@ import timber.log.Timber
 @Composable
 fun ComparisonScreen(viewModel: ComparisonViewModel = viewModel<ComparisonViewModel>()) {
     val uiState by viewModel.uiState.collectAsStateWithLifecycle()
-
-    Column {
+    val count = uiState.starships.count()
+    Column(horizontalAlignment = Alignment.CenterHorizontally) {
         if (uiState.starships.isEmpty()) {
             Text(text = stringResource(id = R.string.no_selected_vehicles))
         } else {
             Text(
                 text = pluralStringResource(
                     id = R.plurals.compare_selected_vehicles,
-                    uiState.starships.count()
+                    count, count
                 )
             )
             StarshipsGrid(viewModel, uiState.starships.toList(), uiState.metrics)
