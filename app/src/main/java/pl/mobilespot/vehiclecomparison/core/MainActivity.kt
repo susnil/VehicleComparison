@@ -68,7 +68,6 @@ class MainActivity : ComponentActivity() {
                                 navController = navController,
                                 startDestination = Route.CollectionScreen.route,
                             ) {
-
                                 composable(route = Route.CollectionScreen.route) { backStackEntry ->
                                     CollectionScreen(comparisonViewModel)
                                 }

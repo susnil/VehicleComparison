@@ -12,15 +12,24 @@ data class Starship(
     val manufacturer: List<String>,
     override val films: Int,
     override val pilots: Int,
-    val cargoCapacity: Long,
-    val costInCredits: Long,
-    val crew: Long,
-    val passengers: Long,
-    val length: Float,
-    val hyperdriveRating: Float,
+    override val cargoCapacity: Long,
+    override val costInCredits: Long,
+    override val crew: Long,
+    override val passengers: Long,
+    override val length: Float,
+    override val hyperdriveRating: Float,
     val created: LocalDateTime,
     val edited: LocalDateTime,
     val maxAtmospheringSpeed: Long?,
     val consumables: Period?,
     val MGLT: Long
-) : ComparableAttributes(films, pilots)
+) : ComparableAttributes(
+    films,
+    pilots,
+    cargoCapacity,
+    costInCredits,
+    crew,
+    passengers,
+    length,
+    hyperdriveRating
+)

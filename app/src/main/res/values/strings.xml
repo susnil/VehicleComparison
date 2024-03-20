@@ -4,9 +4,10 @@
     <string name="loading_error">Can not load any data. Try again later</string>
     <string name="loading">Loading…</string>
 
+    <string name="no_selected_vehicles">You have selected any vehicles!</string>
+
     <plurals name="compare_selected_vehicles">
-        <item quantity="zero">You have selected any vehicles.</item>
-        <item quantity="one">You have only selected one vehicle.</item>
+        <item quantity="one">You have only selected %d vehicle.</item>
         <item quantity="other">You have selected %d vehicles. The largest values are marked in green and the smallest values are marked in red.</item>
     </plurals>
 

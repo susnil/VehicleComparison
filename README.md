@@ -15,9 +15,9 @@ All vehicle data is fetched live from the swapi.dev.
 [x] Show one starship
 [x] Show many starship
 [x] Fetch all starships
-[ ] Compare 2 different starships
-[ ] Compare more than 2 vehicles
-[ ] Highlight the best and worst values
+[x] Compare 2 different starships
+[x] Compare more than 2 vehicles
+[x] Highlight the best and worst values
 [ ] Kotlin Coroutines
 [ ] History of vehicle comparison
 [ ] Filter selected vehicles by most important parameters (e.g. manufacturer or model)
