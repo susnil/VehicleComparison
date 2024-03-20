@@ -9,7 +9,10 @@ data class Metrics(
     override val passengers: Long,
     override val length: Float,
     override val hyperdriveRating: Float,
-) : ComparableAttributes(
+    override val MGLT: Long,
+    override val maxAtmospheringSpeed: Long?,
+
+    ) : ComparableAttributes(
     films,
     pilots,
     cargoCapacity,
@@ -17,5 +20,11 @@ data class Metrics(
     crew,
     passengers,
     length,
-    hyperdriveRating
-)
+    hyperdriveRating,
+    MGLT,
+    maxAtmospheringSpeed
+) {
+    companion object {
+        val raw = Metrics(0, 0, 0L, 0L, 0L, 0L, 0.0F, 0.0F, 0, null)
+    }
+}

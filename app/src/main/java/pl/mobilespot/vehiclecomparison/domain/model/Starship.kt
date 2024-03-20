@@ -20,9 +20,9 @@ data class Starship(
     override val hyperdriveRating: Float,
     val created: LocalDateTime,
     val edited: LocalDateTime,
-    val maxAtmospheringSpeed: Long?,
+    override val maxAtmospheringSpeed: Long?,
     val consumables: Period?,
-    val MGLT: Long
+    override val MGLT: Long
 ) : ComparableAttributes(
     films,
     pilots,
@@ -31,5 +31,7 @@ data class Starship(
     crew,
     passengers,
     length,
-    hyperdriveRating
+    hyperdriveRating,
+    MGLT,
+    maxAtmospheringSpeed
 )

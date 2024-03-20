@@ -21,6 +21,8 @@ class CompareUseCase @Inject constructor() {
                     starships.minOfOrNull { it.passengers } ?: 0L,
                     starships.minOfOrNull { it.length } ?: 0.0F,
                     starships.minOfOrNull { it.hyperdriveRating } ?: 0.0F,
+                    starships.minOfOrNull { it.MGLT } ?: 0L,
+                    starships.minOfOrNull { it.maxAtmospheringSpeed ?: 0 },
                 ),
                 maxMetrics = Metrics(
                     starships.maxOfOrNull { it.films } ?: 0,
@@ -31,6 +33,8 @@ class CompareUseCase @Inject constructor() {
                     starships.maxOfOrNull { it.passengers } ?: 0L,
                     starships.maxOfOrNull { it.length } ?: 0.0F,
                     starships.maxOfOrNull { it.hyperdriveRating } ?: 0.0F,
+                    starships.maxOfOrNull { it.MGLT } ?: 0L,
+                    starships.maxOfOrNull { it.maxAtmospheringSpeed ?: 0 },
                 ),
             ).also { Timber.d("CompareAttributes: $it") }
         } else MinMaxMetrics.raw

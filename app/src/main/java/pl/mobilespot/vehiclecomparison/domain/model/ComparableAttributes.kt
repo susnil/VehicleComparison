@@ -9,4 +9,6 @@ abstract class ComparableAttributes(
     open val passengers: Long,
     open val length: Float,
     open val hyperdriveRating: Float,
+    open val MGLT: Long,
+    open val maxAtmospheringSpeed: Long?,
 )

@@ -81,8 +81,15 @@ fun StarshipDetailsScreen(
             }
 
             Column {
-                starship.manufacturer.forEach { manufacturer ->
-                    StarshipAttribute(value = manufacturer, image = MSIcon.Tag)
+                StarshipAttribute(
+                    placeholder = R.string.attribute_manufacturer,
+                    value = "",
+                    image = MSIcon.Label
+                )
+                Column(Modifier.padding(start = MaterialTheme.padding.medium)) {
+                    starship.manufacturer.forEach { manufacturer ->
+                        StarshipAttribute(value = manufacturer, image = MSIcon.Tag)
+                    }
                 }
             }
 
@@ -107,18 +114,36 @@ fun StarshipDetailsScreen(
                 value = "${starship.costInCredits}",
                 image = MSIcon.Money
             )
-            StarshipAttribute(
-                placeholder = R.string.attribute_max_atmosphering_speed,
-                value = "${starship.maxAtmospheringSpeed ?: "N/A"}",
-                image = MSIcon.Speed
-            )
+            starship.maxAtmospheringSpeed?.let {
+                Modifier.takeBackgroundForMetrics(
+                    metrics?.minMetrics?.maxAtmospheringSpeed,
+                    metrics?.maxMetrics?.maxAtmospheringSpeed,
+                    it
+                )
+            }?.let {
+                StarshipAttribute(
+                    it,
+                    placeholder = R.string.attribute_max_atmosphering_speed,
+                    value = "${starship.maxAtmospheringSpeed ?: "N/A"}",
+                    image = MSIcon.Speed
+                )
+            }
 
             StarshipAttribute(
                 placeholder = R.string.attribute_consumables,
                 value = readablePeriod(starship),
                 image = MSIcon.Consumables
             )
-
+            StarshipAttribute(
+                Modifier.takeBackgroundForMetrics(
+                    metrics?.minMetrics?.MGLT,
+                    metrics?.maxMetrics?.MGLT,
+                    starship.MGLT
+                ),
+                placeholder = R.string.attribute_MGLT,
+                value = "${starship.MGLT}",
+                image = MSIcon.MGLT
+            )
             Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween) {
                 StarshipAttribute(
                     Modifier
