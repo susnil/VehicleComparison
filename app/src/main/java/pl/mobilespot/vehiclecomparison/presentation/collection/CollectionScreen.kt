@@ -1,15 +1,27 @@
 package pl.mobilespot.vehiclecomparison.presentation.collection
 
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
+import androidx.compose.material3.AlertDialog
+import androidx.compose.material3.FloatingActionButton
+import androidx.compose.material3.Icon
 import androidx.compose.material3.LinearProgressIndicator
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.stringResource
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.paging.LoadState
@@ -19,6 +31,8 @@ import androidx.paging.compose.itemKey
 import pl.mobilespot.vehiclecomparison.R
 import pl.mobilespot.vehiclecomparison.domain.model.Starship
 import pl.mobilespot.vehiclecomparison.presentation.comparison.ComparisonViewModel
+import pl.mobilespot.vehiclecomparison.presentation.desigsystem.icon.MSIcon
+import pl.mobilespot.vehiclecomparison.presentation.desigsystem.theme.padding
 import pl.mobilespot.vehiclecomparison.presentation.desigsystem.theme.size
 import pl.mobilespot.vehiclecomparison.presentation.starship.StarshipDetailsScreen
 
@@ -31,16 +45,43 @@ fun CollectionScreen(
 
     val handlePagingResult = handlePagingResult(pagingItems)
     if (handlePagingResult) {
-        LazyVerticalGrid(
-            columns = GridCells.Adaptive(MaterialTheme.size.minGridSize),
-        ) {
-            items(count = pagingItems.itemCount,
-                key = pagingItems.itemKey { it.name }) { index ->
-                pagingItems[index]?.let {
-                    StarshipDetailsScreen(
-                        comparisonViewModel,
-                        starship = it
-                    )
+        Box(Modifier.fillMaxSize()) {
+            LazyVerticalGrid(
+                columns = GridCells.Adaptive(MaterialTheme.size.minGridSize),
+            ) {
+                items(count = pagingItems.itemCount,
+                    key = pagingItems.itemKey { it.name }) { index ->
+                    pagingItems[index]?.let {
+                        StarshipDetailsScreen(
+                            comparisonViewModel,
+                            starship = it
+                        )
+                    }
+                }
+            }
+            var isFilterDialogShown by remember {
+                mutableStateOf(false)
+            }
+            if (isFilterDialogShown) {
+                FilterDialog(
+                    {
+                        viewModel.clearFilter()
+                        isFilterDialogShown = false
+                    },
+                    {
+                        viewModel.searchName("S")
+                        isFilterDialogShown = false
+                    },
+                    MSIcon.FilterEnable
+                )
+            }
+
+            Box(Modifier.fillMaxSize(), contentAlignment = Alignment.BottomEnd) {
+                FloatingActionButton(
+                    onClick = { isFilterDialogShown = true },
+                    Modifier.padding(MaterialTheme.padding.medium),
+                ) {
+                    Icon(MSIcon.FilterEnable, "Filter")
                 }
             }
         }
@@ -48,7 +89,7 @@ fun CollectionScreen(
 }
 
 @Composable
-fun handlePagingResult(articles: LazyPagingItems<Starship>): Boolean {
+private fun handlePagingResult(articles: LazyPagingItems<Starship>): Boolean {
     val loadState = articles.loadState
     val error = when {
         loadState.refresh is LoadState.Error -> loadState.refresh as LoadState.Error
@@ -92,3 +133,46 @@ private fun LoadingInfo() {
     }
 }
 
+
+@Composable
+fun FilterDialog(
+    onDismissRequest: () -> Unit,
+    onConfirmation: () -> Unit,
+    icon: ImageVector,
+) {
+    AlertDialog(
+        icon = {
+            Icon(icon, contentDescription = stringResource(id = R.string.filter))
+        },
+        title = {
+            Text(stringResource(id = R.string.filter))
+        },
+        text = {
+            Column {
+                Text(stringResource(id = R.string.attribute_name))
+                Text(stringResource(id = R.string.attribute_manufacturer))
+            }
+        },
+        onDismissRequest = {
+            onDismissRequest()
+        },
+        confirmButton = {
+            TextButton(
+                onClick = {
+                    onConfirmation()
+                }
+            ) {
+                Text(stringResource(id = R.string.apply))
+            }
+        },
+        dismissButton = {
+            TextButton(
+                onClick = {
+                    onDismissRequest()
+                }
+            ) {
+                Text(stringResource(id = R.string.dismiss))
+            }
+        }
+    )
+}

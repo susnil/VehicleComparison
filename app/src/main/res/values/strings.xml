@@ -30,5 +30,8 @@
     <string name="attribute_model">Model:</string>
     <string name="attribute_name">Name:</string>
     <string name="attribute_starship_class">Starship_class:</string>
+    <string name="dismiss">Disable filter</string>
+    <string name="apply">Apply</string>
+    <string name="filter">Filter by</string>
 
 </resources>
