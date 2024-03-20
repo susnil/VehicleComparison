@@ -24,36 +24,26 @@ class ComparisonViewModel @Inject constructor(val compareUseCase: CompareUseCase
     val uiState = _uiState.asStateFlow()
     fun hasSelected(starship: Starship) = _uiState.value.starships.contains(starship)
     fun select(starship: Starship): Boolean {
-        Timber.d("Selected ${starship.name} ")
         val hasSelected = hasSelected(starship)
         if (hasSelected) {
-            remove(starship)
+            update(starship, true)
         } else {
-            add(starship)
+            update(starship, false)
         }
-        Timber.d("Count: ${starshipsCount()}. ")
+        Timber.d("Selected ${starship.name}. Selected elements: ${starshipsCount()}. ")
         return !hasSelected
     }
 
     private fun starshipsCount() = _uiState.value.starships.count()
 
-    private fun add(starship: Starship) {
+    private fun update(starship: Starship, contains: Boolean) {
         _uiState.update {
             val starships = mutableSetOf<Starship>()
             starships.addAll(_uiState.value.starships)
-            starships.add(starship)
-            _uiState.value.copy(starships, compareUseCase(starships))
+            if (contains) {
+                starships.remove(starship)
+            } else starships.add(starship)
+            _uiState.value.copy(starships = starships, metrics = compareUseCase(starships))
         }
     }
-
-    private fun remove(starship: Starship) {
-        _uiState.update {
-            val starships = mutableSetOf<Starship>()
-            starships.addAll(_uiState.value.starships)
-            starships.remove(starship)
-            _uiState.value.copy(starships, compareUseCase(starships))
-        }
-    }
-
-
 }
