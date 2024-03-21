@@ -11,6 +11,7 @@ import kotlinx.coroutines.test.runBlockingTest
 import org.junit.Test
 import pl.mobilespot.vehiclecomparison.data.local.LogDao
 import pl.mobilespot.vehiclecomparison.domain.model.Log
+import pl.mobilespot.vehiclecomparison.test.common.FakeLogs
 
 class GetSavedLogsTest {
 
@@ -19,8 +20,8 @@ class GetSavedLogsTest {
     fun `invoke usecase should return list of logs`() = runBlockingTest {
         // given
         val expectedLogs = listOf(
-            Log("10:00:00 21-03-2024", "Star Destroyer,CR90 corvette"),
-            Log("10:01:00 21-03-2024", "Death Star,CR90 corvette")
+            FakeLogs.log1,
+            FakeLogs.log2
         )
         val logDao = mockk<LogDao>()
 

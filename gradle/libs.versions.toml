@@ -1,6 +1,7 @@
 [versions]
 agp = "8.3.0"
 converterGson = "2.9.0"
+coreRuntime = "2.2.0"
 gson = "2.10.1"
 kotlin = "1.9.0"
 coreKtx = "1.12.0"
@@ -22,7 +23,10 @@ androidxHiltNavigationCompose = "1.2.0"
 androidxLifecycle = "2.7.0"
 
 [libraries]
+androidx-core-common = { module = "androidx.arch.core:core-common", version.ref = "coreRuntime" }
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
+androidx-core-runtime = { module = "androidx.arch.core:core-runtime", version.ref = "coreRuntime" }
+androidx-core-testing = { module = "androidx.arch.core:core-testing", version.ref = "coreRuntime" }
 androidx-paging-compose = { module = "androidx.paging:paging-compose", version.ref = "pagingRuntime" }
 androidx-paging-runtime = { module = "androidx.paging:paging-runtime", version.ref = "pagingRuntime" }
 androidx-room-compiler = { module = "androidx.room:room-compiler", version.ref = "roomRuntime" }
