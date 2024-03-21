@@ -7,7 +7,6 @@ import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
-import pl.mobilespot.vehiclecomparison.domain.model.Log
 import pl.mobilespot.vehiclecomparison.domain.usecase.GetSavedLogs
 import javax.inject.Inject
 
@@ -29,7 +28,3 @@ class HistoryViewModel @Inject constructor(
         }.launchIn(viewModelScope)
     }
 }
-
-data class LogState(
-    val logs: List<Log> = emptyList()
-)
