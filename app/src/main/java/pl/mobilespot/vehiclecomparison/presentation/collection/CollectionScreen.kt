@@ -143,7 +143,7 @@ private fun LoadingInfo() {
 
 
 @Composable
-fun FilterDialog(
+private fun FilterDialog(
     onDismissRequest: () -> Unit,
     onConfirmation: (String, String) -> Unit,
     icon: ImageVector,

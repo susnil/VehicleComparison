@@ -11,6 +11,7 @@ All vehicle data is fetched live from the swapi.dev.
 - Dagger Hilt
 - 📝Kotlin Coroutines
 - Paging 
+- Room 
 
 # Goals
 [x] Show one starship
@@ -22,7 +23,7 @@ All vehicle data is fetched live from the swapi.dev.
 [x] 📝Highlight the best and worst values
 [x] Kotlin Coroutines
 [x] ⭐️Some unit tests for mapper, use cases.
-[ ] ⭐️History of vehicle comparison
+[x] ⭐️History of vehicle comparison
 [x] ⭐️Filter selected vehicles by most important parameters (e.g. manufacturer or model)
 [ ] Add collaborator to this repository
 
@@ -33,6 +34,8 @@ All vehicle data is fetched live from the swapi.dev.
 ![Collection_Tablet.png](screenshots%2FCollection_Tablet.png)
 
 ![Compare_Tablet.png](screenshots%2FCompare_Tablet.png)
+
+![History_Phone.png](screenshots%2FHistory_Phone.png)
 
 # Recommendation
 Android Studio Iguana | 2023.2.1

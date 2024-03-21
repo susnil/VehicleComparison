@@ -11,7 +11,7 @@
         <item quantity="other">You have selected %d vehicles. The largest values are marked in green and the smallest values are marked in red.</item>
     </plurals>
 
-    <string name="compare_error">Can not compare any data. Select at least 2 vehicles and try again.</string>
+    <string name="compare_error">Can not compare any data. \nSelect at least 2 vehicles and try again.</string>
 
     <string name="attribute_films">Films:</string>
     <string name="attribute_pilots">Pilots:</string>
@@ -33,5 +33,7 @@
     <string name="dismiss">Disable filter</string>
     <string name="apply">Apply</string>
     <string name="filter">Filter by</string>
+    <string name="no_logs">"No historical comparisons. "</string>
+    <string name="history_header">Historical comparisons:</string>
 
 </resources>

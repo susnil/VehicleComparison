@@ -1,12 +1,11 @@
 package pl.mobilespot.vehiclecomparison.domain.usecase
 
+import pl.mobilespot.vehiclecomparison.core.Constants.MIN_ELEMENTS_TO_COMPARE
 import pl.mobilespot.vehiclecomparison.domain.model.Metrics
 import pl.mobilespot.vehiclecomparison.domain.model.MinMaxMetrics
 import pl.mobilespot.vehiclecomparison.domain.model.Starship
 import timber.log.Timber
 import javax.inject.Inject
-
-private const val MIN_ELEMENTS_TO_COMPARE = 2
 
 class CompareUseCase @Inject constructor() {
     operator fun invoke(starships: MutableSet<Starship>): MinMaxMetrics {
