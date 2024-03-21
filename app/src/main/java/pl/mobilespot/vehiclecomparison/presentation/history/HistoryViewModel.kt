@@ -1,10 +1,11 @@
 package pl.mobilespot.vehiclecomparison.presentation.history
 
-import androidx.compose.runtime.State
-import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import pl.mobilespot.vehiclecomparison.domain.usecase.GetSavedLogs
@@ -15,8 +16,8 @@ class HistoryViewModel @Inject constructor(
     private val getSavedLogs: GetSavedLogs
 ) : ViewModel() {
 
-    private val _state = mutableStateOf(LogState())
-    val state: State<LogState> = _state
+    private val _state: MutableStateFlow<LogState> = MutableStateFlow(LogState())
+    val state: StateFlow<LogState> = _state.asStateFlow()
 
     init {
         getLogs()
